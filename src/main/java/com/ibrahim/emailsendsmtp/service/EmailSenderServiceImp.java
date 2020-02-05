@@ -16,14 +16,14 @@ public class EmailSenderServiceImp implements IEmailSenderService{
 
     @Override
     public Session configureEmailSMTP(String fromEmail, String password, 
-            String host, boolean tlsEnable, boolean sslEnable) {
-        return configureEmailSMTP(fromEmail, password, host, tlsEnable, sslEnable);
+            String host, int sslOrTlsEnable) {
+        return configuration.configureEmailSMTP(fromEmail, password, host, sslOrTlsEnable);
     }
 
     @Override
     public void sendEmail(Session session, String toEmail, String fromEmail, 
-            String senderName, String body, String subject) throws MessagingException, UnsupportedEncodingException {
-        emailSender.sendEmail(session, toEmail, fromEmail, senderName, body, subject);
+            String senderName, String body, String subject, String messageId) throws MessagingException, UnsupportedEncodingException {
+        emailSender.sendEmail(session, toEmail, fromEmail, senderName, body, subject,messageId);
     }
     
 }

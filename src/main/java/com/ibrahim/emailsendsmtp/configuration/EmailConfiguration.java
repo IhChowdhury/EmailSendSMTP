@@ -11,7 +11,7 @@ import javax.mail.Session;
  */
 public class EmailConfiguration {
 
-    public Session configureEmailSMTP(String fromEmail, String password, String host, boolean tlsEnable, boolean sslEnable) {
+    public Session configureEmailSMTP(String fromEmail, String password, String host, int sslOrTlsEnable) {
 
         Authenticator authenticator = new Authenticator() {
             @Override
@@ -22,10 +22,10 @@ public class EmailConfiguration {
         };
         Properties props = null;
 
-        if (tlsEnable) {
-            props = getPropertiesForTLS(host);
-        } else if (sslEnable) {
+        if (sslOrTlsEnable == 1) {
             props = getPropertiesForSSL(host);
+        } else if (sslOrTlsEnable == 2) {
+            props = getPropertiesForTLS(host);
         } else {
             System.out.println("Please define TLS or SSL.");
         }
