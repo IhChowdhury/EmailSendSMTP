@@ -22,8 +22,8 @@ public class EmailSenderServiceImp implements IEmailSenderService{
 
     @Override
     public void sendEmail(Session session, String toEmail, String fromEmail, 
-            String senderName, String body, String subject, String messageId) throws MessagingException, UnsupportedEncodingException {
-        emailSender.sendEmail(session, toEmail, fromEmail, senderName, body, subject,messageId);
+            String senderName, String body, String subject, String messageId, String[] attachments) throws MessagingException, UnsupportedEncodingException {
+        emailSender.sendEmail(session, toEmail, fromEmail, senderName, body, subject,messageId,attachments);
     }
     
 }
