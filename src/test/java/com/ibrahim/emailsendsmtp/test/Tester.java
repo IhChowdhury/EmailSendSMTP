@@ -13,24 +13,27 @@ import javax.mail.Session;
  * @author Ibrahim Chowdhury
  */
 public class Tester {
-    public static void main(String[] args){
-        String fromEmail = "mahtab.uddinnn@gmail.com";
+
+    public static void main(String[] args) {
+//        String fromEmail = "mahtab.uddinnn@gmail.com";
+        String fromEmail = "skyroproject10@gmail.com";
         String password = "qwerty142536";
         String host = "smtp.gmail.com";
-        
-        String toEmail = "test@linereflection.com";
-        String body = "This is test";
-        String subject = "Check Sender";
+
+        String toEmail = "mahtab.uddinnn@gmail.com";
+        String body = "This is test 2";
+        String subject = "Re:Intorduction email";
+        String messageId = "<CAN8Q0nr3-iq9-=-=7u1NyhkNAa+1wc-9ZOgwE8DMpXViWcGsKg@mail.gmail.com>";
         EmailConfiguration configuration = new EmailConfiguration();
         EmailSender emailSender = new EmailSender();
-        Session session = configuration.configureEmailSMTP(fromEmail, password, host, true, false);
+        Session session = configuration.configureEmailSMTP(fromEmail, password, host, 1);
         try {
-            emailSender.sendEmail(session, toEmail, fromEmail, "test", body, subject);
+            emailSender.sendEmail(session, toEmail, fromEmail, "test", body, subject, messageId,null);
         } catch (MessagingException ex) {
             Logger.getLogger(Tester.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(Tester.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }
